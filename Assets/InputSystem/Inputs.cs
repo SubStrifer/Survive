@@ -11,6 +11,7 @@ public class Inputs : MonoBehaviour
 	public Vector2 look;
 	public bool jump;
 	public bool sprint;
+	public bool fire;
 
 	[Header("Movement Settings")]
 	public bool analogMovement;
@@ -44,11 +45,14 @@ public class Inputs : MonoBehaviour
 	{
 		SprintInput(value.isPressed);
 	}
+
+	public void OnFire(InputValue value)
+	{
+		FireInput(value.isPressed);
+	}
 #else
 // old input sys if we do decide to have it (most likely wont)...
 #endif
-
-
 	public void MoveInput(Vector2 newMoveDirection)
 	{
 		move = newMoveDirection;
@@ -67,6 +71,11 @@ public class Inputs : MonoBehaviour
 	public void SprintInput(bool newSprintState)
 	{
 		sprint = newSprintState;
+	}
+
+	public void FireInput(bool newFireState)
+	{
+		fire = newFireState;
 	}
 
 #if !UNITY_IOS || !UNITY_ANDROID

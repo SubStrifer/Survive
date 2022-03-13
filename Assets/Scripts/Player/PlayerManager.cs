@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerManager : Singleton<PlayerManager>
 {
     public GameObject player => _player;
+    public ItemContainer inventory => _player.GetComponent<ItemContainer>();
 
     [SerializeField]
     private GameObject _player;
