@@ -1,3 +1,4 @@
+using UnityEngine.EventSystems;
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
@@ -68,7 +69,6 @@ namespace StarterAssets
 		private CharacterController _controller;
 		private Inputs _input;
 		private GameObject _mainCamera;
-
 		private const float _threshold = 0.01f;
 		
 		private bool IsCurrentDeviceMouse => _playerInput.currentControlScheme == "KeyboardMouse";
@@ -92,13 +92,16 @@ namespace StarterAssets
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
 		}
-
+		
 		private void Update()
 		{
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
 		}
+	
+
+	public LayerMask movementMask;	// Filter out everything not walkable
 
 		private void LateUpdate()
 		{
