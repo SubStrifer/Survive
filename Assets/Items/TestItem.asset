@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: TestItem
   m_EditorClassIdentifier: 
   _itemName: Test Item
+  _prefab: {fileID: 545408460374854912, guid: 2a9d84e61aa1043b0a13d4256d53c75a, type: 3}
