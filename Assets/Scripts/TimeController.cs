@@ -5,13 +5,16 @@ using TMPro;
 public class TimeController : MonoBehaviour
 {
     [SerializeField]
-    private float timeMultiplier;
+    public float timeMultiplier;
 
     [SerializeField]
     private float startHour;
 
     [SerializeField]
     private TextMeshProUGUI timeText;
+
+    [SerializeField]
+    private TextMeshProUGUI fadePanelTime;
 
     [SerializeField]
     private TextMeshProUGUI tempValue;
@@ -43,7 +46,7 @@ public class TimeController : MonoBehaviour
     [SerializeField]
     private float maxMoonLightIntensity;
 
-    private DateTime currentTime;
+    public DateTime currentTime;
 
     private Double degrees;
     private TimeSpan sunriseTime;
@@ -74,6 +77,7 @@ public class TimeController : MonoBehaviour
         if (timeText != null)
         {
             timeText.text = currentTime.ToString("HH:mm");
+            fadePanelTime.text = currentTime.ToString("HH:mm");
         }
     }
 
