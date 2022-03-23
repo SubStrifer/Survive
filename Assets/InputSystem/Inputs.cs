@@ -82,12 +82,8 @@ public class Inputs : MonoBehaviour
 
 	private void OnApplicationFocus(bool hasFocus)
 	{
-		SetCursorState(cursorLocked);
-	}
-
-	private void SetCursorState(bool newState)
-	{
-		Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
+		if (hasFocus)
+			PlayerManager.Instance.LockCursor(hasFocus);
 	}
 
 #endif
