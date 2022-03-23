@@ -18,6 +18,9 @@ public class PlayerInteraction : MonoBehaviour
     
     [SerializeField]
     private GameObject FadePanel;
+
+    [SerializeField]
+    private GameObject CraftingCanvas;
     
     [SerializeField]
     private TextMeshProUGUI _sliderText;
@@ -65,6 +68,10 @@ public class PlayerInteraction : MonoBehaviour
                     //     PlayerManager.Instance.inventory.Add(item.itemInfo);
                     //     Destroy(hit.transform.gameObject);
                     // }
+            }
+            if (Physics.Raycast(ray, out hit, 3f, 0b100000000))//8th layer "Printer"
+            {
+                CraftingCanvas.SetActive(true);
             }
         }
     }
