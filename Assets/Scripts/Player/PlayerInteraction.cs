@@ -23,7 +23,7 @@ public class PlayerInteraction : MonoBehaviour
     private GameObject CraftingCanvas;
     
     [SerializeField]
-    private TextMeshProUGUI _sliderText;
+    private TextMeshProUGUI _sliderValue;
     private RaycastHit hit;
     private DateTime recordedTime;
     private bool timeFlag = true;
@@ -45,7 +45,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if(resting)
         {
-            if(_timeController.currentTime >= recordedTime.AddHours(float.Parse(_sliderText.text)))
+            if(_timeController.currentTime >= recordedTime.AddHours(float.Parse(_sliderValue.text)))
                 {
                     _timeController.timeMultiplier = recordedtimeSpeed;                    
                     resting = !resting;
@@ -61,13 +61,16 @@ public class PlayerInteraction : MonoBehaviour
             Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f));
             if (Physics.Raycast(ray, out hit, 3f, 0b1000000))
             {
+                    ItemPickup item;
+                    if(item = hit.transform.GetComponent<ItemPickup>())
+                    {
+                        PlayerManager.Instance.inventory.Add(item.itemInfo);
+                        Destroy(hit.transform.gameObject);
+                    }
+            }
+            if (Physics.Raycast(ray, out hit, 3f, 0b1000000))
+            {
                 GoToSleep();
-                    // ItemPickup item;
-                    // if(item = hit.transform.GetComponent<ItemPickup>())
-                    // {
-                    //     PlayerManager.Instance.inventory.Add(item.itemInfo);
-                    //     Destroy(hit.transform.gameObject);
-                    // }
             }
             if (Physics.Raycast(ray, out hit, 3f, 0b100000000))//8th layer "Printer"
             {
@@ -80,7 +83,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if(HoursPanel.activeSelf)
         {       
-            if (float.Parse(_sliderText.text) > 0)
+            if (float.Parse(_sliderValue.text) > 0)
             {
                 if(timeFlag)
                 {
