@@ -127,4 +127,9 @@ public class TimeController : MonoBehaviour
 
         return difference;
     }
+
+    public double getTemperature()
+    {
+        return Math.Round(degrees, 2);
+    }
 }
