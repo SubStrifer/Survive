@@ -75,6 +75,7 @@ public class PlayerInteraction : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 3f, 0b100000000))//8th layer "Printer"
             {
                 CraftingCanvas.SetActive(true);
+                //PlayerManager.Instance.cursorLocked.Equals(false);
             }
         }
     }
