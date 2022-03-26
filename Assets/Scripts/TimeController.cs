@@ -14,19 +14,24 @@ public class TimeController : MonoBehaviour
     private TextMeshProUGUI timeText;
 
     [SerializeField]
-    private TextMeshProUGUI fadePanelTime;
-
-    [SerializeField]
     private TextMeshProUGUI tempValue;
 
     [SerializeField]
-    private Light sunLight;
+    private Light sunLightA;
+    [SerializeField]
+    private GameObject sunA;
 
     [SerializeField]
-    private float sunriseHour;
+    private Light sunLightB;
 
     [SerializeField]
-    private float sunsetHour;
+    private GameObject sunB;
+
+    [SerializeField]
+    private float sunriseAHour;
+
+    [SerializeField]
+    private float sunsetAHour;
 
     [SerializeField]
     private Color dayAmbientLight;
@@ -38,35 +43,32 @@ public class TimeController : MonoBehaviour
     private AnimationCurve lightChangeCurve;
 
     [SerializeField]
-    private float maxSunLightIntensity;
+    private float maxSunLightAIntensity;
 
     [SerializeField]
-    private Light moonLight;
-
-    [SerializeField]
-    private float maxMoonLightIntensity;
+    private float maxSunLightBIntensity;
 
     public DateTime currentTime;
 
-    private Double degrees;
-    private TimeSpan sunriseTime;
+    private int degrees;
+    private TimeSpan sunriseATime;
 
-    private TimeSpan sunsetTime;
+    private TimeSpan sunsetATime;
 
     // Start is called before the first frame update
     void Start()
     {
         currentTime = DateTime.Now.Date + TimeSpan.FromHours(startHour);
-        sunriseTime = TimeSpan.FromHours(sunriseHour);
-        sunsetTime = TimeSpan.FromHours(sunsetHour);
+        sunriseATime = TimeSpan.FromHours(sunriseAHour);
+        sunsetATime = TimeSpan.FromHours(sunsetAHour);
     }
 
     // Update is called once per frame
     void Update()
     {
         UpdateTimeOfDay();
-        tempValue.text= Math.Round(degrees, 2).ToString();
-        RotateSun();
+        tempValue.text= degrees.ToString();
+        RotateSunA();
         UpdateLightSettings();
     }
 
@@ -77,43 +79,43 @@ public class TimeController : MonoBehaviour
         if (timeText != null)
         {
             timeText.text = currentTime.ToString("HH:mm");
-            fadePanelTime.text = currentTime.ToString("HH:mm");
         }
     }
 
-    private void RotateSun()
+    private void RotateSunA()
     {
-        float sunLightRotation;
+        float sunLightARotation;
 
-        if (currentTime.TimeOfDay > sunriseTime && currentTime.TimeOfDay < sunsetTime)
+        if (currentTime.TimeOfDay > sunriseATime && currentTime.TimeOfDay < sunsetATime)
         {
-            TimeSpan sunriseToSunsetDuration = CalculateTimeDifference(sunriseTime, sunsetTime);
-            TimeSpan timeSinceSunrise = CalculateTimeDifference(sunriseTime, currentTime.TimeOfDay);
+            TimeSpan sunriseToSunsetDuration = CalculateTimeDifference(sunriseATime, sunsetATime);
+            TimeSpan timeSinceSunrise = CalculateTimeDifference(sunriseATime, currentTime.TimeOfDay);
 
             double percentage = timeSinceSunrise.TotalMinutes / sunriseToSunsetDuration.TotalMinutes;
 
-            sunLightRotation = Mathf.Lerp(0, 180, (float)percentage);
+            sunLightARotation = Mathf.Lerp(0, 180, (float)percentage);
         }
         else
         {
-            TimeSpan sunsetToSunriseDuration = CalculateTimeDifference(sunsetTime, sunriseTime);
-            TimeSpan timeSinceSunset = CalculateTimeDifference(sunsetTime, currentTime.TimeOfDay);
+            TimeSpan sunsetToSunriseDuration = CalculateTimeDifference(sunsetATime, sunriseATime);
+            TimeSpan timeSinceSunset = CalculateTimeDifference(sunsetATime, currentTime.TimeOfDay);
 
             double percentage = timeSinceSunset.TotalMinutes / sunsetToSunriseDuration.TotalMinutes;
 
-            sunLightRotation = Mathf.Lerp(180, 360, (float)percentage);
+            sunLightARotation = Mathf.Lerp(180, 360, (float)percentage);
         }
 
-        sunLight.transform.rotation = Quaternion.AngleAxis(sunLightRotation, Vector3.right);
+        sunA.transform.rotation = Quaternion.AngleAxis(sunLightARotation, Vector3.right);
+        sunB.transform.rotation = Quaternion.AngleAxis(sunLightARotation+20, Vector3.right);
     }
 
     private void UpdateLightSettings()
     {
-        float dotProduct = Vector3.Dot(sunLight.transform.forward, Vector3.down);
-        sunLight.intensity = Mathf.Lerp(0, maxSunLightIntensity, lightChangeCurve.Evaluate(dotProduct));
-        degrees = sunLight.intensity/1.2*50 + 10;
-        moonLight.intensity = Mathf.Lerp(maxMoonLightIntensity, 0, lightChangeCurve.Evaluate(dotProduct));
-        RenderSettings.ambientLight = Color.Lerp(nightAmbientLight, dayAmbientLight, lightChangeCurve.Evaluate(dotProduct));
+        float dotProduct = Vector3.Dot(sunLightA.transform.forward, Vector3.down);
+        sunLightA.intensity = Mathf.Lerp(0, maxSunLightAIntensity, lightChangeCurve.Evaluate(dotProduct));
+        degrees = (int)(sunLightA.intensity/1.2*50 + 10);
+        sunLightB.intensity = Mathf.Lerp(0, maxSunLightBIntensity, lightChangeCurve.Evaluate(dotProduct));
+        //RenderSettings.ambientLight = Color.Lerp(nightAmbientLight, dayAmbientLight, lightChangeCurve.Evaluate(dotProduct));
     }
 
     private TimeSpan CalculateTimeDifference(TimeSpan fromTime, TimeSpan toTime)

@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5150707730174466183}
+  - component: {fileID: 1226544974}
+  - component: {fileID: 1226544976}
   m_Layer: 0
   m_Name: TimeController
   m_TagString: Untagged
@@ -30,3 +32,108 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1226544974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3584827705449099142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de84b2de64508b24cb7156e21168416f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeMultiplier: 4000
+  startHour: 5
+  timeText: {fileID: 0}
+  tempValue: {fileID: 0}
+  sunLightA: {fileID: 0}
+  sunA: {fileID: 0}
+  sunLightB: {fileID: 0}
+  sunB: {fileID: 0}
+  sunriseAHour: 6
+  sunsetAHour: 18
+  dayAmbientLight: {r: 0.9056604, g: 0.9019361, b: 0.611748, a: 0}
+  nightAmbientLight: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
+  lightChangeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.15372384
+      value: 0.85042715
+      inSlope: 0.813886
+      outSlope: 0.813886
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.33333334
+      outWeight: 0.2249101
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxSunLightAIntensity: 1.2
+  maxSunLightBIntensity: 0.6
+--- !u!114 &1226544976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3584827705449099142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a514c09c5efc840468614a8f917491be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.19894409
+      value: -0.0022850037
+      inSlope: 3.365426
+      outSlope: 3.365426
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.50016904
+      value: 1.0114653
+      inSlope: -0.0043542166
+      outSlope: -0.0043542166
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.15073024
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.7975464
+      value: -0.009559631
+      inSlope: -3.433432
+      outSlope: -3.433432
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  volume: {fileID: 0}
