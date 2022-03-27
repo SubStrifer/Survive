@@ -33,12 +33,14 @@ public class PlayerStats : MonoBehaviour
 
         moralebar.maxValue = moralemax;
         moralebar.value = moralemax;
+
+        StartCoroutine(StatModifier());
     }
 
     // Update is called once per frame
     void Update()
     {
-        temperature = time.getTemperature();
+        
     }
 
     public void changeHealth(int value)
@@ -59,5 +61,25 @@ public class PlayerStats : MonoBehaviour
     public void changeMorale(int value)
     {
         moralebar.value += value;
+    }
+
+    IEnumerator StatModifier()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(120);
+            temperature = time.getTemperature();
+            if(temperature < 50)
+            {
+                changeWater(-5);
+            }
+            else
+            {
+                changeWater(-1);
+            }
+            changeFood(-1);
+            changeMorale(-1);
+        }
+
     }
 }

@@ -130,8 +130,8 @@ public class TimeController : MonoBehaviour
         return difference;
     }
 
-    public double getTemperature()
+    public int getTemperature()
     {
-        return Math.Round(degrees, 2);
+        return degrees;
     }
 }
