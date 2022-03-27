@@ -19,6 +19,8 @@ public class PlayerStats : MonoBehaviour
     public TimeController time;
     private double temperature;
 
+    public int statstick;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -67,7 +69,7 @@ public class PlayerStats : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(120);
+            yield return new WaitForSeconds(statstick);
             temperature = time.getTemperature();
             if(temperature < 50)
             {
