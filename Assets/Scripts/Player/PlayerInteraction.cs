@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -24,6 +25,10 @@ public class PlayerInteraction : MonoBehaviour
     
     [SerializeField]
     private TextMeshProUGUI _sliderValue;
+
+    [SerializeField] Image health;
+
+    [SerializeField] Image moral;
     private RaycastHit hit;
     private DateTime recordedTime;
     private bool timeFlag = true;
@@ -49,7 +54,9 @@ public class PlayerInteraction : MonoBehaviour
                 {
                     _timeController.timeMultiplier = recordedtimeSpeed;                    
                     resting = !resting;
-                    timeFlag = !timeFlag;
+                    timeFlag = !timeFlag;                    
+                    health.fillAmount = 1;
+                    moral.fillAmount = 1;
                     Fade();
                 }
         }
