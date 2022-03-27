@@ -12,11 +12,14 @@ public class PlayerManager : Singleton<PlayerManager>
     [SerializeField]
     private GameObject _player;
 
+    public ItemInfo water;
+
     // Start is called before the first frame update
     void Start()
     {
         LockCursor(true);
         inventory.Clear();
+        inventory.Add(water);
     }
 
     // Update is called once per frame

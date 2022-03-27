@@ -74,8 +74,20 @@ public class PlayerInteraction : MonoBehaviour
                     ItemPickup item;
                     if(item = hit.transform.GetComponent<ItemPickup>())
                     {
-                        PlayerManager.Instance.inventory.Add(item.itemInfo);
-                        Destroy(hit.transform.gameObject);
+                        if(item.itemInfo.itemName == "Water")
+                        {
+                            if(PlayerManager.Instance.inventory.items.Contains(item.itemInfo._waterBottle))
+                            {
+                                PlayerManager.Instance.inventory.Remove(item.itemInfo._waterBottle);
+                                PlayerManager.Instance.inventory.Add(item.itemInfo);
+                            }
+                        }
+                        else
+                        {
+                            PlayerManager.Instance.inventory.Add(item.itemInfo);
+                            Destroy(hit.transform.gameObject);
+                        }
+                            
                     }
             }
             if (Physics.Raycast(ray, out hit, 3f, 0b1000000))
