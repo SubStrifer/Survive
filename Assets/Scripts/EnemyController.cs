@@ -50,7 +50,7 @@ public class EnemyController : MonoBehaviour
     {
         particles.Play();
         idle = false;
-        player.GetComponent<PlayerStats>().changeMorale(-10);
+        player.GetComponent<PlayerStats>().changeMorale(-20);
         player.GetComponent<PlayerStats>().stressTrigger();
     }
 
@@ -58,6 +58,7 @@ public class EnemyController : MonoBehaviour
     {
         particles.Stop();
         agent.isStopped = true;
+        player.GetComponent<PlayerStats>().calmTrigger();
     }
 
     public void distract(GameObject d)
