@@ -83,7 +83,7 @@ public class PlayerStats : MonoBehaviour
         {
             yield return new WaitForSeconds(statstick);
             temperature = time.getTemperature();
-            if(temperature > 50)
+            if(temperature > 40)
             {
                 changeWater(-15);
             }
