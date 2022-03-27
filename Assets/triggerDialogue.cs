@@ -7,11 +7,12 @@ public class triggerDialogue : MonoBehaviour
 
     public DialogueManager dialogueManager;
     public Dialogue dialogue;
-    public Objective objective;
+    public Objective newObjective;
+    public int oldObjectiveID;
 
     void OnTriggerEnter()
     {
-        dialogueManager.StartDialogue(dialogue, objective);
+        dialogueManager.StartDialogue(dialogue, newObjective, oldObjectiveID);
     }
 
     void OnTriggerExit()

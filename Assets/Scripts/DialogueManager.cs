@@ -8,7 +8,8 @@ public class DialogueManager : MonoBehaviour
     public Text dialogueText;
     Queue<string> dialogueSentences;
     public ObjectiveManager objManager;
-    Objective objective;
+    Objective newObjective;
+    int oldObjectiveID;
     public GameObject dialogueBox;
 
     void Start()
@@ -24,10 +25,11 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void StartDialogue(Dialogue dialogue, Objective obj){
+    public void StartDialogue(Dialogue dialogue, Objective newObj, int oldObjID){
         
         dialogueBox.SetActive(true);
-        objective = obj;
+        newObjective = newObj;
+        oldObjectiveID = oldObjID;
 
         foreach(string sentence in dialogue.sentences)
         {
@@ -52,13 +54,20 @@ public class DialogueManager : MonoBehaviour
         //Disable dialogue box
         dialogueBox.SetActive(false);
 
-        if (objective.title == "DELETE")
+        updateObjectives();
+    }
+
+    void updateObjectives()
+    {
+        if(oldObjectiveID != 9999)
         {
-            objManager.removeObjective(objective.objectiveID);
-        } else {
-            objManager.addObjective(objective);
+            objManager.removeObjective(oldObjectiveID);
         }
         
+        if (newObjective.title != "NONE")
+        {
+            objManager.addObjective(newObjective);
+        }
     }
 
 }

@@ -11,7 +11,7 @@ public class ObjectiveManager : MonoBehaviour
     public Text objective1_desc;
     public Text objective2_title;
     public Text objective2_desc;
-    List<Objective> activeObjectives;
+    public List<Objective> activeObjectives;
     Text[,] objectiveList;
     int maxObjectives =3;
     
