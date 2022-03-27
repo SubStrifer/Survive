@@ -105,8 +105,8 @@ public class TimeController : MonoBehaviour
             sunLightARotation = Mathf.Lerp(180, 360, (float)percentage);
         }
 
-        sunA.transform.rotation = Quaternion.AngleAxis(sunLightARotation, Vector3.right);
-        sunB.transform.rotation = Quaternion.AngleAxis(sunLightARotation+20, Vector3.right);
+        sunA.transform.rotation = Quaternion.AngleAxis(sunLightARotation+20, Vector3.right);
+        sunB.transform.rotation = Quaternion.AngleAxis(sunLightARotation+35, Vector3.right);
     }
 
     private void UpdateLightAndTemp()

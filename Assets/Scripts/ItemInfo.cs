@@ -18,4 +18,19 @@ public class ItemInfo : ScriptableObject
     public GameObject prefab => _prefab;
     public Sprite sprite => _sprite;
     public ItemInfo[] recipe => _recipe;
+
+    public bool Use()
+    {
+        if (itemName == "Cranberry")
+        {
+            PlayerManager.Instance.GetComponentInParent<PlayerStats>().changeFood(-100);
+            return true;
+        }
+        else if (itemName == "Blueberry")
+        {
+            PlayerManager.Instance.GetComponentInParent<PlayerStats>().changeFood(20);
+            return true;
+        }
+        return false;
+    }
 }

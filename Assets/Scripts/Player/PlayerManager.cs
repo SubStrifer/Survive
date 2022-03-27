@@ -7,6 +7,7 @@ public class PlayerManager : Singleton<PlayerManager>
     public GameObject player => _player;
     public ItemContainer inventory => _player.GetComponent<ItemContainer>();
     public bool cursorLocked => Cursor.lockState == CursorLockMode.Locked;
+    public GameObject inventoryUI;
 
     [SerializeField]
     private GameObject _player;
@@ -21,7 +22,11 @@ public class PlayerManager : Singleton<PlayerManager>
     // Update is called once per frame
     void Update()
     {
-
+        if(Input.GetKeyUp(KeyCode.Tab))
+        {
+            inventoryUI.SetActive(!inventoryUI.activeSelf);
+            LockCursor(!inventoryUI.activeSelf);
+        }
     }
 
     public void LockCursor(bool locked)
