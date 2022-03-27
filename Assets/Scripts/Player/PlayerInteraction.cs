@@ -37,6 +37,9 @@ public class PlayerInteraction : MonoBehaviour
     private bool mFaded = false;
     private float duration = 0.4f;
 
+    [SerializeField]
+    private Rigidbody rock;
+
 
     // Start is called before the first frame update
     void Start()
@@ -84,6 +87,11 @@ public class PlayerInteraction : MonoBehaviour
                 CraftingCanvas.SetActive(true);
                 //PlayerManager.Instance.cursorLocked.Equals(false);
             }
+        }
+        if (Input.GetKeyDown("r"))
+        {
+            Rigidbody r = Instantiate(rock, _mainCamera.transform.position + _mainCamera.transform.forward, _mainCamera.transform.rotation);
+            r.velocity = _mainCamera.transform.forward * 40;
         }
     }
 

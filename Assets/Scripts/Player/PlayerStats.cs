@@ -21,6 +21,8 @@ public class PlayerStats : MonoBehaviour
 
     public int statstick;
 
+    private bool stressed = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,6 +67,16 @@ public class PlayerStats : MonoBehaviour
         moralebar.value += value;
     }
 
+    public void stressTrigger()
+    {
+        stressed = true;
+    }
+
+    public void calmTrigger()
+    {
+        stressed = false;
+    }
+
     IEnumerator StatModifier()
     {
         while (true)
@@ -79,8 +91,17 @@ public class PlayerStats : MonoBehaviour
             {
                 changeWater(-1);
             }
+
             changeFood(-1);
-            changeMorale(-1);
+
+            if (stressed)
+            {
+                changeMorale(-5);
+            }
+            else
+            {
+                changeMorale(-1);
+            }
         }
 
     }
