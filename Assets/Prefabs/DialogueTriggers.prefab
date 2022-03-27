@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4489040169285594505
+--- !u!1 &4647623212430171392
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,88 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4489040169285594518}
-  - component: {fileID: 4489040169285594517}
-  - component: {fileID: 4489040169285594516}
-  - component: {fileID: 4489040169285594519}
+  - component: {fileID: 4647623212430171393}
+  - component: {fileID: 4647623212430171396}
+  - component: {fileID: 4647623212430171399}
+  - component: {fileID: 4647623212430171398}
+  m_Layer: 0
+  m_Name: trigger1
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4647623212430171393
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4647623212430171392}
+  m_LocalRotation: {x: 0, y: 0.17364846, z: -0, w: -0.9848077}
+  m_LocalPosition: {x: -5.99, y: -2.27, z: 6.9}
+  m_LocalScale: {x: 15, y: 10, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4647623213358499714}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 340, z: 0}
+--- !u!33 &4647623212430171396
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4647623212430171392}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &4647623212430171399
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4647623212430171392}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4647623212430171398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4647623212430171392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33461ec110acf0f45b9478b155166db3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueManager: {fileID: 0}
+  dialogue:
+    sentences:
+    - Whew... that's a relief. Good to know this is here. Somewhere to sleep maybe.
+    - If I could just find some water, maybe even a little food, I could make this
+      quite a cosy little camp for the night
+    - I should get up somewhere high to take a look around
+  newObjective:
+    title: Looking for food and water
+    description: Get up to the top of the highest hill
+    objectiveID: 1
+  oldObjectiveID: 0
+--- !u!1 &4647623212599708829
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4647623212599708802}
+  - component: {fileID: 4647623212599708801}
+  - component: {fileID: 4647623212599708800}
+  - component: {fileID: 4647623212599708803}
   m_Layer: 0
   m_Name: trigger0
   m_TagString: Untagged
@@ -19,48 +97,48 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4489040169285594518
+--- !u!4 &4647623212599708802
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4489040169285594505}
+  m_GameObject: {fileID: 4647623212599708829}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.52, y: -2.27, z: 12.03}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
-  m_Father: {fileID: 4489040170186729110}
+  m_Father: {fileID: 4647623213358499714}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4489040169285594517
+--- !u!33 &4647623212599708801
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4489040169285594505}
+  m_GameObject: {fileID: 4647623212599708829}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &4489040169285594516
+--- !u!65 &4647623212599708800
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4489040169285594505}
+  m_GameObject: {fileID: 4647623212599708829}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4489040169285594519
+--- !u!114 &4647623212599708803
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4489040169285594505}
+  m_GameObject: {fileID: 4647623212599708829}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33461ec110acf0f45b9478b155166db3, type: 3}
@@ -71,11 +149,12 @@ MonoBehaviour:
     sentences:
     - These suns...the heat...
     - I need to find some shelter...and fast
-  objective:
+  newObjective:
     title: Find Shelter
-    description: Find somewhere to shelter from the sun
+    description: Find somewhere to take shelter
     objectiveID: 0
---- !u!1 &4489040169519102996
+  oldObjectiveID: 9999
+--- !u!1 &4647623213343605059
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -83,59 +162,59 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4489040169519102997}
-  - component: {fileID: 4489040169519102992}
-  - component: {fileID: 4489040169519102995}
-  - component: {fileID: 4489040169519102994}
+  - component: {fileID: 4647623213343605056}
+  - component: {fileID: 4647623213343605063}
+  - component: {fileID: 4647623213343605062}
+  - component: {fileID: 4647623213343605057}
   m_Layer: 0
-  m_Name: trigger1
+  m_Name: trigger4
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4489040169519102997
+--- !u!4 &4647623213343605056
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4489040169519102996}
-  m_LocalRotation: {x: 0, y: 0.17364846, z: -0, w: -0.9848077}
-  m_LocalPosition: {x: -5.99, y: -2.27, z: 6.9}
-  m_LocalScale: {x: 15, y: 10, z: 1}
+  m_GameObject: {fileID: 4647623213343605059}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.52, y: -2.27, z: 83}
+  m_LocalScale: {x: 500, y: 10, z: 1}
   m_Children: []
-  m_Father: {fileID: 4489040170186729110}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 340, z: 0}
---- !u!33 &4489040169519102992
+  m_Father: {fileID: 4647623213358499714}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &4647623213343605063
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4489040169519102996}
+  m_GameObject: {fileID: 4647623213343605059}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &4489040169519102995
+--- !u!65 &4647623213343605062
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4489040169519102996}
+  m_GameObject: {fileID: 4647623213343605059}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4489040169519102994
+--- !u!114 &4647623213343605057
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4489040169519102996}
+  m_GameObject: {fileID: 4647623213343605059}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33461ec110acf0f45b9478b155166db3, type: 3}
@@ -144,12 +223,14 @@ MonoBehaviour:
   dialogueManager: {fileID: 0}
   dialogue:
     sentences:
-    - Whew... that's a relief. Good to know this is here. Somewhere to sleep maybe.
-  objective:
-    title: DELETE
-    description: DELETE
-    objectiveID: 0
---- !u!1 &4489040170186729097
+    - It's so quiet. This desert, this planet, has so far been one great uncomfortable
+      silence.
+  newObjective:
+    title: Sing a song
+    description: Break up the silence with some music
+    objectiveID: 2
+  oldObjectiveID: 9999
+--- !u!1 &4647623213358499741
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,7 +238,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4489040170186729110}
+  - component: {fileID: 4647623213358499714}
   m_Layer: 0
   m_Name: DialogueTriggers
   m_TagString: Untagged
@@ -165,19 +246,96 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4489040170186729110
+--- !u!4 &4647623213358499714
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4489040170186729097}
+  m_GameObject: {fileID: 4647623213358499741}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 119.23736, y: 5.014384, z: -387.81818}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4489040169285594518}
-  - {fileID: 4489040169519102997}
+  - {fileID: 4647623212599708802}
+  - {fileID: 4647623212430171393}
+  - {fileID: 4647623213896760196}
+  - {fileID: 4647623213343605056}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4647623213896760199
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4647623213896760196}
+  - component: {fileID: 4647623213896760203}
+  - component: {fileID: 4647623213896760202}
+  - component: {fileID: 4647623213896760197}
+  m_Layer: 0
+  m_Name: trigger3
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4647623213896760196
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4647623213896760199}
+  m_LocalRotation: {x: 0, y: 0.17364846, z: -0, w: -0.9848077}
+  m_LocalPosition: {x: -5.62, y: 13.3, z: 1.35}
+  m_LocalScale: {x: 15, y: 10, z: 10}
+  m_Children: []
+  m_Father: {fileID: 4647623213358499714}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 340, z: 0}
+--- !u!33 &4647623213896760203
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4647623213896760199}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &4647623213896760202
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4647623213896760199}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4647623213896760197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4647623213896760199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33461ec110acf0f45b9478b155166db3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueManager: {fileID: 0}
+  dialogue:
+    sentences:
+    - An oasis! My luck is holding out.
+  newObjective:
+    title: Oasis
+    description: Reach the oasis
+    objectiveID: 0
+  oldObjectiveID: 1
