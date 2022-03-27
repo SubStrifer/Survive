@@ -10401,7 +10401,7 @@ PrefabInstance:
       objectReference: {fileID: 2010086256}
     - target: {fileID: 1226544974, guid: b0359c07b15e6a64fa717faedced8c34, type: 3}
       propertyPath: startHour
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1226544974, guid: b0359c07b15e6a64fa717faedced8c34, type: 3}
       propertyPath: sunLightA
@@ -10417,7 +10417,7 @@ PrefabInstance:
       objectReference: {fileID: 783432843}
     - target: {fileID: 1226544974, guid: b0359c07b15e6a64fa717faedced8c34, type: 3}
       propertyPath: timeMultiplier
-      value: 200
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 1226544974, guid: b0359c07b15e6a64fa717faedced8c34, type: 3}
       propertyPath: tempCurve.m_Curve.Array.size
@@ -10497,11 +10497,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1226544974, guid: b0359c07b15e6a64fa717faedced8c34, type: 3}
       propertyPath: lightChangeCurve.m_Curve.Array.data[0].inSlope
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1226544974, guid: b0359c07b15e6a64fa717faedced8c34, type: 3}
       propertyPath: lightChangeCurve.m_Curve.Array.data[1].inSlope
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1226544974, guid: b0359c07b15e6a64fa717faedced8c34, type: 3}
       propertyPath: lightChangeCurve.m_Curve.Array.data[2].inSlope
@@ -10509,7 +10509,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1226544974, guid: b0359c07b15e6a64fa717faedced8c34, type: 3}
       propertyPath: lightChangeCurve.m_Curve.Array.data[0].outSlope
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1226544974, guid: b0359c07b15e6a64fa717faedced8c34, type: 3}
       propertyPath: lightChangeCurve.m_Curve.Array.data[1].inWeight
@@ -10517,7 +10517,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1226544974, guid: b0359c07b15e6a64fa717faedced8c34, type: 3}
       propertyPath: lightChangeCurve.m_Curve.Array.data[1].outSlope
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1226544974, guid: b0359c07b15e6a64fa717faedced8c34, type: 3}
       propertyPath: lightChangeCurve.m_Curve.Array.data[2].inWeight
@@ -10537,11 +10537,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1226544974, guid: b0359c07b15e6a64fa717faedced8c34, type: 3}
       propertyPath: lightChangeCurve.m_Curve.Array.data[0].tangentMode
-      value: 0
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 1226544974, guid: b0359c07b15e6a64fa717faedced8c34, type: 3}
       propertyPath: lightChangeCurve.m_Curve.Array.data[1].tangentMode
-      value: 0
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 1226544974, guid: b0359c07b15e6a64fa717faedced8c34, type: 3}
       propertyPath: lightChangeCurve.m_Curve.Array.data[2].tangentMode

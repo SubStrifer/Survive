@@ -113,7 +113,7 @@ public class TimeController : MonoBehaviour
     {
         float dotProduct = Vector3.Dot(sunLightA.transform.forward, Vector3.down);
         sunLightA.intensity = Mathf.Lerp(0, maxSunLightAIntensity, lightChangeCurve.Evaluate(dotProduct));
-        degrees = (int)((sunLightA.intensity/1.2*70) -10);
+        degrees = (int)((sunLightA.intensity/1.2*60) -10);
         sunLightB.intensity = Mathf.Lerp(0, maxSunLightBIntensity, lightChangeCurve.Evaluate(dotProduct));
         RenderSettings.ambientLight = Color.Lerp(nightAmbientLight, dayAmbientLight, lightChangeCurve.Evaluate(dotProduct));
     }
