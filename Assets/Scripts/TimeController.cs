@@ -67,9 +67,9 @@ public class TimeController : MonoBehaviour
     void Update()
     {
         UpdateTimeOfDay();
-        tempValue.text= degrees.ToString();
+        tempValue.text = degrees.ToString();
         RotateSunA();
-        UpdateLightSettings();
+        UpdateLightAndTemp();
     }
 
     private void UpdateTimeOfDay()
@@ -109,15 +109,14 @@ public class TimeController : MonoBehaviour
         sunB.transform.rotation = Quaternion.AngleAxis(sunLightARotation+20, Vector3.right);
     }
 
-    private void UpdateLightSettings()
+    private void UpdateLightAndTemp()
     {
         float dotProduct = Vector3.Dot(sunLightA.transform.forward, Vector3.down);
         sunLightA.intensity = Mathf.Lerp(0, maxSunLightAIntensity, lightChangeCurve.Evaluate(dotProduct));
-        degrees = (int)(sunLightA.intensity/1.2*50 + 10);
+        degrees = (int)((sunLightA.intensity/1.2*70) -10);
         sunLightB.intensity = Mathf.Lerp(0, maxSunLightBIntensity, lightChangeCurve.Evaluate(dotProduct));
-        //RenderSettings.ambientLight = Color.Lerp(nightAmbientLight, dayAmbientLight, lightChangeCurve.Evaluate(dotProduct));
+        RenderSettings.ambientLight = Color.Lerp(nightAmbientLight, dayAmbientLight, lightChangeCurve.Evaluate(dotProduct));
     }
-
     private TimeSpan CalculateTimeDifference(TimeSpan fromTime, TimeSpan toTime)
     {
         TimeSpan difference = toTime - fromTime;
