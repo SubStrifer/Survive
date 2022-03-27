@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 545408460374854927}
   - component: {fileID: 545408460374854922}
   m_Layer: 0
-  m_Name: TestItem
+  m_Name: Wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

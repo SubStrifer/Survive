@@ -4,67 +4,107 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CraftingManager : MonoBehaviour
+public class CraftingManager : Singleton<CraftingManager>
 {
-    private Item currentItem;
+    public ItemInfo[] registeredRecipes;
+    private ItemInfo currentItem;
     public Image customCursor;
-    public Slot[] craftingSlots;
+    public GameObject[] craftingSlots;
+    public GameObject inventoryUI;
+    public GameObject itemDisplayPrefab;
+    public GameObject result;
 
-    public List<Item> itemList;
-    public string[] recipes;
-    public Item[] recipeResults;
-    public Slot resultSlot;
     private void Update() {
         if(Input.GetMouseButtonUp(0)){
-            if(currentItem!= null){
+            if(currentItem != null){
                 customCursor.gameObject.SetActive(false);
-                Slot nearestSlot = null;
-                float shortestDistance = float.MaxValue;
+                GameObject nearestSlot = null;
+                float shortestDistance = 128f;
 
-                foreach(Slot slot in craftingSlots){
+                foreach(GameObject slot in craftingSlots){
                     float dist = Vector2.Distance(Input.mousePosition, slot.transform.position);
                     if(dist < shortestDistance){
                         shortestDistance = dist;
                         nearestSlot = slot;
                     }
                 }
-                nearestSlot.gameObject.SetActive(true);
-                nearestSlot.GetComponent<Image>().sprite = currentItem.GetComponent<Image>().sprite;
-                nearestSlot.item = currentItem;
-                itemList[nearestSlot.index] = currentItem;
-
+                if (nearestSlot != null)
+                {
+                    // Return item to inventory if already in the slot
+                    if (nearestSlot.GetComponent<ItemDisplay>().item != null)
+                        PlayerManager.Instance.inventory.Add(nearestSlot.GetComponent<ItemDisplay>().item);
+                    nearestSlot.GetComponent<ItemDisplay>().SetItem(currentItem);
+                    CheckRecipes();
+                }
+                else
+                {
+                    PlayerManager.Instance.inventory.Add(currentItem);
+                }
                 currentItem = null;
-                CheckForCompletedRecipes();
+                UpdateItems();
             }
         }
     }
 
-    private void CheckForCompletedRecipes()
+    public void UpdateItems()
     {
-        resultSlot.gameObject.SetActive(false);
-        resultSlot.item = null;
-
-        string currentRecipeString = "";
-        foreach(Item item in itemList)
+        inventoryUI.transform.DestroyChildren();
+        foreach(ItemInfo item in PlayerManager.Instance.inventory.items)
         {
-            if (item != null){
-                currentRecipeString +=item.itemName;
-            }else{
-                currentRecipeString += "null";
-            }
-        }
-        for (int i = 0; i < recipes.Length; i++){
-            resultSlot.gameObject.SetActive(true);
-            resultSlot.GetComponent<Image>().sprite = recipeResults[i].GetComponent<Image>().sprite;
-            resultSlot.item = recipeResults[i];
+            GameObject display = Instantiate(itemDisplayPrefab, inventoryUI.transform);
+            display.GetComponent<ItemDisplay>().SetItem(item);
         }
     }
 
-    public void  OnMouseDownItem(Item item) {
-        if(currentItem ==null){
-            currentItem = item;
+    public void CheckRecipes()
+    {
+        List<ItemInfo> ingredients = new List<ItemInfo>();
+        foreach(GameObject slot in craftingSlots)
+        {
+            if (slot.GetComponent<ItemDisplay>().item != null)
+                ingredients.Add(slot.GetComponent<ItemDisplay>().item);
+        }
+        foreach(ItemInfo recipe in registeredRecipes)
+        {
+            List<ItemInfo> tempItems = new List<ItemInfo>(ingredients);
+            bool matched = false;
+            for(int i = 0; i < recipe.recipe.Length; i++)
+            {
+                if (tempItems.Contains(recipe.recipe[i]))
+                    tempItems.Remove(recipe.recipe[i]);
+                else
+                    break;
+                if (i == recipe.recipe.Length - 1 && tempItems.Count == 0)
+                    matched = true;
+            }
+            if(matched)
+            {
+                result.GetComponent<ItemDisplay>().SetItem(recipe);
+                return;
+            }
+        }
+        result.GetComponent<ItemDisplay>().SetItem(null);
+    }
+
+    public void Craft(ItemInfo item)
+    {
+        for(int i = 0; i < craftingSlots.Length; i++)
+        {
+            craftingSlots[i].GetComponent<ItemDisplay>().SetItem(null);
+        }
+        UpdateItems();
+    }
+
+    public void  OnMouseDownItem(ItemDisplay item) {
+        if(currentItem == null && item.item != null){
+            currentItem = item.item;
             customCursor.gameObject.SetActive(true);
-            customCursor.sprite = currentItem.GetComponent<Image>().sprite;
+            customCursor.sprite = item.item.sprite;//currentItem.GetComponent<Image>().sprite;
+            item.SetItem(null);
+            if(!item.craftingSlot && !item.resultSlot)
+                PlayerManager.Instance.inventory.Remove(currentItem);
+            CheckRecipes();
+            UpdateItems();
         }
     }
 }

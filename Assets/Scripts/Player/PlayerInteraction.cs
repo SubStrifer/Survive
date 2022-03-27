@@ -69,7 +69,7 @@ public class PlayerInteraction : MonoBehaviour
             _input.fire = false;
             
             Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f));
-            if (Physics.Raycast(ray, out hit, 3f, 0b1000000))
+            if (Physics.Raycast(ray, out hit, 3f, 0b1))
             {
                     ItemPickup item;
                     if(item = hit.transform.GetComponent<ItemPickup>())
@@ -85,7 +85,8 @@ public class PlayerInteraction : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 3f, 0b100000000))//8th layer "Printer"
             {
                 CraftingCanvas.SetActive(true);
-                //PlayerManager.Instance.cursorLocked.Equals(false);
+                CraftingCanvas.GetComponentInChildren<CraftingManager>().UpdateItems();
+                PlayerManager.Instance.LockCursor(false);
             }
         }
         if (Input.GetKeyDown("r"))

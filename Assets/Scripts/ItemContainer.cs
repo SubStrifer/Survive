@@ -22,7 +22,6 @@ public class ItemContainer : MonoBehaviour
     {
         _items.Add(item);
         ItemAdded?.Invoke(this, new EventArgs<ItemInfo>(item));
-        Debug.Log("Picked up " + item.itemName);
     }
 
     public bool Remove(ItemInfo item)
@@ -43,6 +42,9 @@ public class ItemContainer : MonoBehaviour
         return false;
     }
 
-    //todo dropping items
+    public void Clear()
+    {
+        _items.Clear();
+    }
 
 }

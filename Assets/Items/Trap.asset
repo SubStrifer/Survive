@@ -10,7 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 167c9bed350614b779dbe6f3c0f8e2d3, type: 3}
-  m_Name: TestItem
+  m_Name: Trap
   m_EditorClassIdentifier: 
-  _itemName: Test Item
-  _prefab: {fileID: 545408460374854912, guid: 2a9d84e61aa1043b0a13d4256d53c75a, type: 3}
+  _itemName: Trap
+  _prefab: {fileID: 788508923638844614, guid: 348e75a1ee73049f5b8ee2cc0aa83180, type: 3}
+  _sprite: {fileID: 21300000, guid: 98b79b4826550423ca03c0281072dcd9, type: 3}
+  _recipe:
+  - {fileID: 11400000, guid: 31b71d1f3788d472c8675d7910e07f7a, type: 2}
+  - {fileID: 11400000, guid: 31b71d1f3788d472c8675d7910e07f7a, type: 2}

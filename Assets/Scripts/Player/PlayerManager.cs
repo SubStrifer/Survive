@@ -15,15 +15,13 @@ public class PlayerManager : Singleton<PlayerManager>
     void Start()
     {
         LockCursor(true);
+        inventory.Clear();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.C))
-        {
-            LockCursor(!cursorLocked);
-        }
+
     }
 
     public void LockCursor(bool locked)
