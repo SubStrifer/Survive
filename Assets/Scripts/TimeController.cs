@@ -105,15 +105,15 @@ public class TimeController : MonoBehaviour
             sunLightARotation = Mathf.Lerp(180, 360, (float)percentage);
         }
 
-        sunA.transform.rotation = Quaternion.AngleAxis(sunLightARotation, Vector3.right);
-        sunB.transform.rotation = Quaternion.AngleAxis(sunLightARotation+20, Vector3.right);
+        sunA.transform.rotation = Quaternion.AngleAxis(sunLightARotation+20, Vector3.right);
+        sunB.transform.rotation = Quaternion.AngleAxis(sunLightARotation+35, Vector3.right);
     }
 
     private void UpdateLightAndTemp()
     {
         float dotProduct = Vector3.Dot(sunLightA.transform.forward, Vector3.down);
         sunLightA.intensity = Mathf.Lerp(0, maxSunLightAIntensity, lightChangeCurve.Evaluate(dotProduct));
-        degrees = (int)((sunLightA.intensity/1.2*70) -10);
+        degrees = (int)((sunLightA.intensity/1.2*60) -10);
         sunLightB.intensity = Mathf.Lerp(0, maxSunLightBIntensity, lightChangeCurve.Evaluate(dotProduct));
         RenderSettings.ambientLight = Color.Lerp(nightAmbientLight, dayAmbientLight, lightChangeCurve.Evaluate(dotProduct));
     }

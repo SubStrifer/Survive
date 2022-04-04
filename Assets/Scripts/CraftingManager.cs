@@ -46,6 +46,11 @@ public class CraftingManager : Singleton<CraftingManager>
         }
     }
 
+    private void OnEnable()
+    {
+        UpdateItems();
+    }
+
     public void UpdateItems()
     {
         inventoryUI.transform.DestroyChildren();
@@ -97,6 +102,13 @@ public class CraftingManager : Singleton<CraftingManager>
 
     public void  OnMouseDownItem(ItemDisplay item) {
         if(currentItem == null && item.item != null){
+            if (item.item.Use())
+            {
+                PlayerManager.Instance.inventory.Remove(item.item);
+                UpdateItems();
+                return;
+            }
+                
             currentItem = item.item;
             customCursor.gameObject.SetActive(true);
             customCursor.sprite = item.item.sprite;//currentItem.GetComponent<Image>().sprite;

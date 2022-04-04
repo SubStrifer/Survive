@@ -83,13 +83,13 @@ public class PlayerStats : MonoBehaviour
         {
             yield return new WaitForSeconds(statstick);
             temperature = time.getTemperature();
-            if(temperature > 50)
+            if(temperature > 40)
             {
-                changeWater(-5);
+                changeWater(-15);
             }
             else
             {
-                changeWater(-1);
+                changeWater(-2);
             }
 
             changeFood(-1);
@@ -103,7 +103,16 @@ public class PlayerStats : MonoBehaviour
                 changeMorale(-1);
             }
             
+            if (foodbar.value <= 0f || waterbar.value <= 0f)
+            {
+                changeHealth(-2);
+            }
 
+            if (moralebar.value <= 0f)
+            {
+                changeWater(-1);
+                changeFood(-1);
+            }
         }
 
     }

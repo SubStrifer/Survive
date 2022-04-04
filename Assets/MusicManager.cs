@@ -18,6 +18,7 @@ public class MusicManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             audioSource.Play();
+            PlayerManager.Instance.GetComponentInParent<PlayerStats>().changeMorale(30);
 
             activeObjectives = new List<Objective>(objManager.activeObjectives);
             foreach(Objective ob in activeObjectives){
